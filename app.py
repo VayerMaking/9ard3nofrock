@@ -44,16 +44,31 @@ class Colors(enum.Enum):
     red = "Red"
     blue = "Blue"
 
-class Designs(enum.Enum):
-    original = "Original"
-    inverted = "Inverted"
+# class Designs(enum.Enum):
+#     original = "Original"
+#     inverted = "Inverted"
+
+class Band(db.Model):
+    __tablename__ = 'band'
+    id = db.Column(db.Integer, primary_key = True)
+    band_name = db.Column(db.String(100))
+    band_desc = db.Column(db.String(1000))
+    band_pic = db.Column(db.String(64))
+    band_email = db.Column(db.String(100))
+    band_facebook = db.Column(db.String(100))
+    band_instagram = db.Column(db.String(100))
+    band_bandcamp = db.Column(db.String(100))
+    band_spotify = db.Column(db.String(100))
+    band_youtube = db.Column(db.String(100))
 
 class Product(db.Model):
     __tablename__ = 'product'
     id = db.Column(db.Integer, primary_key = True)
     size = db.Column(db.Enum(Sizes), nullable=False)
     color = db.Column(db.Enum(Colors), nullable=False)
-    design = db.Column(db.Enum(Designs), nullable=False)
+    band_id = db.Column(db.Integer, db.ForeignKey('band.id'))
+    band = db.relationship("Band", backref=db.backref("band", uselist=False))
+    #design = db.Column(db.Enum(Designs), nullable=False)
 
 def hash_password(thing_to_hash):
     return hashlib.sha256(thing_to_hash.encode('utf-8')).hexdigest()
@@ -70,15 +85,18 @@ def index():
         username = session['username']
     else:
         username = "Guest"
-    return render_template('index.html', username=username)
+    products = Product.query.all()
+    print("All products: ", products)
+    return render_template('index.html', username=username, products=products)
 
 @app.route('/paypal', methods=['GET'])
 def paypal():
     return render_template('paypal.html')
 
-@app.route('/products', methods=['GET', 'POST'])
+@app.route('/product', methods=['GET', 'POST'])
 def products():
-    return render_template('products.html')
+    product = Product.query.filter_by(id = request.args.get('product_id')).all()
+    return render_template('product.html', product=product)
 
 @app.route('/add_to_bucket', methods=['GET', 'POST'])
 def add_to_bucket():

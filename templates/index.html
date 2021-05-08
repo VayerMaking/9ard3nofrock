@@ -13,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/css/style.css">
-    <title>Garden-front-end</title>
+    <title>gard3nofrock</title>
 </head>
 
 <body>
@@ -41,11 +41,33 @@
         </div>
     </nav>
 
+      <div class="row">
+        {% for product in products %}
+        <div class="column">
+          <div id="{{product.id}}" class="card" onclick="showMsg(this)">
+                <!-- TODO: add specific image of the order in the card-->
+                <img src="static/images/Product.jpg" alt="2" style="height: auto; width: 100%;">
+                <p>product id: {{ product.id }}</p>
+                <p>product size: {{ product.size.value }}</p>
+                <p>product color: {{ product.color.value }}</p>
+                <p>product band_id: {{ product.band_id.value }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
 
     <footer class="container-fluid text-center" style="color: black;">
         <p>Footer Text</p>
     </footer>
-
+    <script type="application/javascript">
+        function showMsg(item) {
+          console.log(item);
+          var element = document.getElementById(item.id);
+          console.log(item.id);
+          console.log(element);
+          window.location = '/product?product_id=' + item.id;
+        }
+    </script>
 
 
 </body>
