@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/preorder.css">
+
+</head>
+<body>
+
+
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/preorder" method='POST'>
+
+        <div class="row">
+          <div class="col-50">
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="name" placeholder="John M. Doe">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+          </div>
+        </div>
+
+        <input type="submit" value="Preorder" class="btn">
+      </form>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
+{% endif %}
+{% endblock %}

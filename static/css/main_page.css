@@ -1,0 +1,51 @@
+.welcome_text{
+  text-align: justify;
+  text-justify: inter-word;
+  text-shadow: 20px 20px #67eb34;
+  text-align-last: center;
+  padding: 300px 300px 15px 300px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 50%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+.center_button {
+  /* padding-top: 60px; */
+  /* padding-left: 50%; */
+  position: relative;
+  top: 5%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 50%;
+  margin-top: 1%;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+}
+
+.center_welcome_text {
+  /* padding-top: 60px; */
+  /* padding-left: 50%; */
+  position: relative;
+  top: 5%;
+  left: 29%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 60%;
+  /* margin-top: 1%; */
+  margin-left: auto;
+  margin-right: auto;
+}

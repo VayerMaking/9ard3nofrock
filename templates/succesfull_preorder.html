@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../static/preorder.css">
+
+</head>
+<body>
+    <div class="succesfull_preorder_text">
+      <h1>{{name}} your order was succesfull !</h1>
+    </div>
+</body>
+</html>
+{% endif %}
+{% endblock %}
