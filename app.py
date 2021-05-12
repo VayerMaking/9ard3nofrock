@@ -205,6 +205,17 @@ def logout():
     session.pop('username', None)
     return redirect('/')
 
+@app.route('/remove_item', methods=['GET', 'POST'])
+def remove_item():
+    req = request.get_json()
+    print(req)
+    buckets = Bucket.query.filter_by(user_id=session['user_id'], product_id=req['product_id']).delete()
+    db.session.commit()
+    print(buckets)
+    res = make_response(jsonify({"message": "OK"}), 200)
+    return res
+    #return redirect('/')
+
 db.create_all()
 port = int(os.environ.get("PORT", 5000))
 app.run(host='0.0.0.0', port=port, debug=True)

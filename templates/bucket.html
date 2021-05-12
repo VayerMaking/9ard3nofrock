@@ -26,10 +26,45 @@
               <p>product id: {{ product.id }}</p>
               <p>product size: {{ product.size.value }}</p>
               <p>product color: {{ product.color.value }}</p>
+              <button style="display: inline-block;" id="submit" onclick="remove_item({{product.id}});">X</button>
         </div>
       </div>
       {% endfor %}
     </div>
+    <script>
+    function remove_item(product_id) {
+      console.log(product_id)
+
+      var entry = {
+        product_id: product_id
+       }
+       console.log(entry)
+      fetch(`${window.origin}/remove_item`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify(entry),
+        cache: "no-cache",
+        headers: new Headers({
+          "content-type": "application/json"
+        })
+      })
+        .then(function (response) {
+          if (response.status !== 200) {
+            console.log(`Looks like there was a problem. Status code: ${response.status}`);
+            return;
+          }
+          response.json().then(function (data) {
+            console.log(data);
+            location.reload();
+          });
+        })
+        .catch(function (error) {
+          console.log("Fetch error: " + error);
+        });
+
+    }
+
+    </script>
 </body>
 </html>
 {% endif %}
