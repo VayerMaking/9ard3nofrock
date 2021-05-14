@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../static/css/style.css">
 <link rel="stylesheet" href="../static/css/bucket.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Texturina:wght@100&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -22,11 +24,12 @@
       <div class="column">
         <div class="card">
               <!-- TODO: add specific image of the order in the card-->
-              <img src="static/images/Product.jpg" alt="2" style="height: auto; width: 100%;">
+              <button class="close-button" id="submit" onclick="remove_item({{product.id}});">X</button>
+              <img class="round-img" src="static/images/Product.jpg" alt="2" style="height: auto; width: 100%;">
               <p>product id: {{ product.id }}</p>
               <p>product size: {{ product.size.value }}</p>
               <p>product color: {{ product.color.value }}</p>
-              <button style="display: inline-block;" id="submit" onclick="remove_item({{product.id}});">X</button>
+              <!-- <button style="display: inline-block;" id="submit" onclick="remove_item({{product.id}});">X</button> -->
         </div>
       </div>
       {% endfor %}

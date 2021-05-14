@@ -30,10 +30,27 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   text-align: center;
-  background-color: #f1f1f1;
+  color: #fcdce1;
+  background-color: rgb(32 35 36);
 }
 
 * {
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Texturina', serif;
+}
+
+.round-img {
+  border-radius: 15px;
+}
+
+.close-button {
+  color: #fcdce1 !important;
+  border: none;
+  border-radius: 3px;
+  border-width: thin;
+  float: right;
+  margin-bottom: 5px;
+  border-color: #fcdce1;
+  text-align: center;
+  background-color: #d40b29 !important;
 }
