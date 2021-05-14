@@ -194,6 +194,7 @@ def login():
 
         session['username'] = data['username']
         session['user_id'] = user.id
+        session['logged_in'] = True
 
         return redirect(('/'))
 
@@ -203,6 +204,7 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('username', None)
+    session['logged_in'] = False
     return redirect('/')
 
 @app.route('/remove_item', methods=['GET', 'POST'])
