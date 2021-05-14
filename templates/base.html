@@ -34,18 +34,13 @@
 									{% if username %}
 										<li><a href=""><span class="glyphicon"></span>    Logged in as: {{username}}</a></li>
 									{% endif %}
-									<!-- <b><a class="btn top_btn" role="button" href = '/'>Home</a></b>
-									<b><a class="btn top_btn" role="button" href = '/logout'>Log out</a></b> -->
-
-								{% else %}
-									<!-- <h4>Not logged in!</h4> -->
-
-									<!-- <a class="btn" role="button" href="/login">Login</a>
-									<a class="btn" role="button" href="/register">Register</a> -->
-
 								{% endif %}
+								{% if session['logged_in'] %}
+									<li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+								{% else %}
 									<li><a href="login"><span class="glyphicon glyphicon-log-in"></span>    Login</a></li>
 									<li><a href="register"><span class="glyphicon glyphicon-lock"></span>  Register</a></li>
+								{% endif %}
 							</ul>
 					</div>
 			</div>
