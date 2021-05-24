@@ -9,7 +9,12 @@ import enum
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', None)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or 'sqlite:///todo.db'
+if os.environ.get('DATABASE_URL'):
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://')
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
+
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or 'sqlite:///todo.db'
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -127,7 +132,10 @@ def add_to_bucket():
 @app.route('/bucket', methods=['GET'])
 def get_bucket():
     buckets = Bucket.query.filter_by(user_id=session['user_id']).all()
-    user = User.query.filter_by(id=buckets[0].user_id).first()
+    try:
+        user = User.query.filter_by(id=buckets[0].user_id).first()
+    except IndexError:
+        return render_template('empty_bucket.html')
     product_ids = []
     for bucket in buckets:
         product_ids.append(bucket.product_id)
