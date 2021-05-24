@@ -26,14 +26,14 @@
 					</div>
 					<div class="collapse navbar-collapse" id="myNavbar">
 							<ul class="nav navbar-nav">
-									<li><a href="products">Products</a></li>
+									<li><a href="aboutus">About Us</a></li>
 									<li><a href="bucket"><span class="glyphicon glyphicon-shopping-cart"></span>Bucket</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 								{% if session['username'] %}
-									{% if username %}
-										<li><a href=""><span class="glyphicon"></span>    Logged in as: <strong>{{username}}</strong></a></li>
-									{% endif %}
+									<li><a href=""><span class="glyphicon"></span>    Logged in as: <strong>{{session['username']}}</strong></a></li>
+								{% else %}
+									<li><a href=""><span class="glyphicon"></span>    Not Logged In</a></li>
 								{% endif %}
 								{% if session['logged_in'] %}
 									<li><a href="logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
