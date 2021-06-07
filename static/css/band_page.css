@@ -1,0 +1,39 @@
+.fa {
+  padding: none;
+  font-size: 40px !important;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  background-color: Transparent !important;
+  /* border-radius: 50%; */
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: #00C1C9;
+}
+
+.fa-bandcamp {
+  background: #55ACEE;
+  color: #00C1C9;
+}
+
+.fa-spotify {
+  background: #007bb5;
+  color: #00C1C9;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: #00C1C9;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: #00C1C9;
+}

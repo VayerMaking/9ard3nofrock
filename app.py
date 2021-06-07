@@ -103,6 +103,11 @@ def products():
     product = Product.query.filter_by(id = request.args.get('product_id')).all()
     return render_template('product.html', product=product)
 
+@app.route('/band', methods=['GET', 'POST'])
+def band():
+    band = Band.query.filter_by(id = request.args.get('band_id')).first()
+    return render_template('band_page.html', band=band)
+
 @app.route('/add_to_bucket', methods=['GET', 'POST'])
 def add_to_bucket():
     req = request.get_json()

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="static/css/image-table.css">
+  <link rel="stylesheet" href="static/css/band_page.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container-fluid text-center content">
+        <div class="col-sm-6">
+            <div class="container-fluid">
+                <img src="/static/images/{{ band.band_pic }}" style=" width:100%;height: auto; border-radius: 5px;">
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div>
+                <h1>{{ band.band_name }}</h1>
+
+                <p> {{ band.band_desc }}</p>
+            </div>
+            <div style="padding-top: 25%">
+              <a href="{{ band.band_bandcamp }}"class="fa fa-bandcamp"></a>
+              <a href="{{ band.band_spotify }}" class="fa fa-spotify"></a>
+      				<a href="{{ band.band_facebook }}" class="fa fa-facebook"></a>
+              <a href="{{ band.band_youtube }}" class="fa fa-youtube"></a>
+              <a href="{{ band.band_instagram }}" class="fa fa-instagram"></a>
+			       </div>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}
