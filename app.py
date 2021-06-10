@@ -98,8 +98,13 @@ def index():
 def paypal():
     return render_template('paypal.html')
 
-@app.route('/product', methods=['GET', 'POST'])
+@app.route('/products', methods=['GET', 'POST'])
 def products():
+    products = Product.query.filter_by(id = request.args.get('band_id')).all()
+    return render_template('products.html', products=products)
+
+@app.route('/product', methods=['GET', 'POST'])
+def product():
     product = Product.query.filter_by(id = request.args.get('product_id')).all()
     return render_template('product.html', product=product)
 

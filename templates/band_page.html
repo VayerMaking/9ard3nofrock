@@ -21,6 +21,8 @@
                 <h1>{{ band.band_name }}</h1>
 
                 <p> {{ band.band_desc }}</p>
+
+                <button class="btn btn-warning" style="display: inline-block;"  onclick="showAllBandMerch()">Submit message</button>
             </div>
             <div style="padding-top: 25%">
               <a href="{{ band.band_bandcamp }}"class="fa fa-bandcamp"></a>
@@ -31,6 +33,11 @@
 			       </div>
         </div>
     </div>
+    <script type="application/javascript">
+        function showAllBandMerch() {
+          window.location = '/products?band_id=' + {{ band.id }};
+        }
+    </script>
 </body>
 
 </html>
